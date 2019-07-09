@@ -8,7 +8,9 @@ import { buildUrl } from '../../Services/Utils/Utility'
  * @returns {Object}
  */
 
-const BASE_URL = 'http://localhost:8000/api/';
+const BASE_URL = 'https://mysterious-inlet-29046.herokuapp.com/api/';
+
+// const BASE_URL = 'http://localhost:8000/api/';
 
 export function fetchData(api, method = 'GET', params = {}) {
     return fetch(

@@ -49,12 +49,13 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const loggedIn = sessionStorage.getItem('loggedIn');
-    if (loggedIn === 'true') {
-      this.switchScreen('dashboard');
-    } else {
-      this.switchScreen('login');
-    }
+    // const loggedIn = sessionStorage.getItem('loggedIn');
+    // if (loggedIn === 'true') {
+    //   this.switchScreen('dashboard');
+    // } else {
+    //   this.switchScreen('login');
+    // }
+    this.switchScreen('dashboard');
   }
 
   componentDidUpdate(prevState) {
