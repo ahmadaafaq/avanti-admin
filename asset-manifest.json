@@ -1,7 +1,7 @@
 {
   "main.css": "/avanti-admin/static/css/main.350c39f8.chunk.css",
-  "main.js": "/avanti-admin/static/js/main.9a6b8fdb.chunk.js",
-  "main.js.map": "/avanti-admin/static/js/main.9a6b8fdb.chunk.js.map",
+  "main.js": "/avanti-admin/static/js/main.2543e14e.chunk.js",
+  "main.js.map": "/avanti-admin/static/js/main.2543e14e.chunk.js.map",
   "static/js/1.9687f494.chunk.js": "/avanti-admin/static/js/1.9687f494.chunk.js",
   "static/js/1.9687f494.chunk.js.map": "/avanti-admin/static/js/1.9687f494.chunk.js.map",
   "static/js/2.a05e6195.chunk.js": "/avanti-admin/static/js/2.a05e6195.chunk.js",
@@ -31,6 +31,6 @@
   "static/media/app_icon.png": "/avanti-admin/static/media/app_icon.f1fa8cf3.png",
   "static/css/main.350c39f8.chunk.css.map": "/avanti-admin/static/css/main.350c39f8.chunk.css.map",
   "index.html": "/avanti-admin/index.html",
-  "precache-manifest.1929ddfd56d07cc99efd0f673fa5457d.js": "/avanti-admin/precache-manifest.1929ddfd56d07cc99efd0f673fa5457d.js",
+  "precache-manifest.9723372e3be4cfb9af17211a1420a9fb.js": "/avanti-admin/precache-manifest.9723372e3be4cfb9af17211a1420a9fb.js",
   "service-worker.js": "/avanti-admin/service-worker.js"
 }
