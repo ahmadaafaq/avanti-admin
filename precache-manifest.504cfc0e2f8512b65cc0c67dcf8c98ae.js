@@ -36,8 +36,8 @@ self.__precacheManifest = [
     "url": "/avanti-admin/static/js/main.0562d93a.chunk.js"
   },
   {
-    "revision": "2c158f9c04c51991f76e",
-    "url": "/avanti-admin/static/js/8.2c158f9c.chunk.js"
+    "revision": "bf74a3b14f8882cd4936",
+    "url": "/avanti-admin/static/js/8.bf74a3b1.chunk.js"
   },
   {
     "revision": "db95e3a7dafa42cca462",
@@ -56,15 +56,15 @@ self.__precacheManifest = [
     "url": "/avanti-admin/static/js/12.f8c70fff.chunk.js"
   },
   {
-    "revision": "5341ac2fca9647e5b09d",
-    "url": "/avanti-admin/static/js/runtime~main.5341ac2f.js"
+    "revision": "38ae1d2ef170c057a0fe",
+    "url": "/avanti-admin/static/js/runtime~main.38ae1d2e.js"
   },
   {
     "revision": "f1fa8cf3b2ea3d2cede76100136b3386",
     "url": "/avanti-admin/static/media/app_icon.f1fa8cf3.png"
   },
   {
-    "revision": "512d277410102538b2de47b44b8398f5",
+    "revision": "a34efff4b8e4c0322ec9ad1effd2bd5f",
     "url": "/avanti-admin/index.html"
   }
 ];
