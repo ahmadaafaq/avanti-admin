@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/avanti-admin/precache-manifest.b8f51d915408a764f57fd0442c728660.js"
+  "/avanti-admin/precache-manifest.4b97f2617bd1bf7324cc20efbfaf7071.js"
 );
 
 workbox.clientsClaim();
