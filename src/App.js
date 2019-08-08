@@ -6,6 +6,7 @@ import Header from "./Layout/Header/Header";
 import SideNav from "./Layout/Navigation/Navigation";
 import Main from "./Layout/Main/Main";
 import Footer from "./Layout/Footer/Footer";
+import Loader from "../src/Components/LoadingIcon/LoadingIcon";
 import { FaBars } from "react-icons/fa";
 import {
   bindClassMethodsToThis,
@@ -25,6 +26,7 @@ const LazyRoute = lazy(() => import("./Components/Route/Route"));
 const LazyStudent = lazy(() => import("./Components/Student/Student"));
 const LazyUser = lazy(() => import("./Components/User/User"));
 const LazySchool = lazy(() => import("./Components/School/School"));
+const LazyNotification = lazy(() => import("./Components/Notification/Notification"));
 
 /**
  * App.
@@ -49,13 +51,12 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // const loggedIn = sessionStorage.getItem('loggedIn');
-    // if (loggedIn === 'true') {
-    //   this.switchScreen('dashboard');
-    // } else {
-    //   this.switchScreen('login');
-    // }
-    this.switchScreen('dashboard');
+    const loggedIn = sessionStorage.getItem('loggedIn');
+    if (loggedIn === 'true') {
+      this.switchScreen('dashboard');
+    } else {
+      this.switchScreen('login');
+    }
   }
 
   componentDidUpdate(prevState) {
@@ -156,6 +157,8 @@ class App extends Component {
         return <LazyUser screen={screen} />;
       case "school":
         return <LazySchool screen={screen} />;
+      case "notification":
+        return <LazyNotification screen={screen} />;
       default:
         return <LazyDashboard screen={screen} />;
     }
@@ -180,7 +183,7 @@ class App extends Component {
             </React.Fragment>
           }
           <Main>
-            <Suspense fallback={<div>loading ...</div>}>
+            <Suspense fallback={<Loader />}>
               {LazyComponent}
             </Suspense>
           </Main>

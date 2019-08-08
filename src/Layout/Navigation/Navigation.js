@@ -13,7 +13,8 @@ import {
   FaArrowDown,
   FaLocationArrow,
   FaUserCircle,
-  FaSchool
+  FaSchool,
+  FaMailchimp
 } from "react-icons/fa";
 import { bindClassMethodsToThis } from "../../Services/Utils/Utility";
 import logo from '../../Public/images/app_icon.png';
@@ -109,6 +110,13 @@ class Navigation extends Component {
           >
             <FaRoute />
             <span>Route</span>
+          </li>
+          <li
+            className="sidenav-list-item notification"
+            onClick={() => this.props.switchScreen("notification")}
+          >
+            <FaMailchimp />
+            <span>Notification</span>
           </li>
           <li
             className="sidenav-list-item payment"

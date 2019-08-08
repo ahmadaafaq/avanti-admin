@@ -53,8 +53,10 @@ class Table extends Component {
         return (
             <div className="table-container" role="table" aria-label="Destinations" css={TableStyles}>
                 <div className="table-menu">
-                    <div className="table-search">
-                        <Input classname="table-search-input" placeholder="Search" keyUpHandler={() => this.keyUpHandler} />
+                    < div className="table-search">
+                        {!this.props.noSearch &&
+                            <Input classname="table-search-input" placeholder="Search" keyUpHandler={() => this.keyUpHandler} />
+                        }
                     </div>
                     <div className="table-name">
                         <p>{this.props.screen} List</p>
@@ -69,25 +71,29 @@ class Table extends Component {
                     )}
                 </div>
 
-                {this.props.dataArray.map((data, key) =>
-                    <div key={key} className="flex-table row" role="rowgroup">
-                        {data.map((dataVal, key) =>
-                            key !== 0 &&
-                            <div key={key}
-                                className="flex-row"
-                                role="cell"
-                                onClick={() => {
-                                    if (key === 1) {
-                                        this.props.updateData(data[0]);
-                                        this.openModal();
-                                    }
-                                }}
-                            >
-                                {dataVal}
-                            </div>
-                        )}
-                    </div>
-                )}
+                {
+                    this.props.dataArray.map((data, key) =>
+                        <div key={key} className="flex-table row" role="rowgroup">
+                            {data.map((dataVal, key) =>
+                                key !== 0 &&
+                                <div key={key}
+                                    className="flex-row"
+                                    role="cell"
+                                    onClick={() => {
+                                        if (key === 1) {
+                                            if (this.props.updateData) {
+                                                this.props.updateData(data[0]);
+                                                this.openModal();
+                                            }
+                                        }
+                                    }}
+                                >
+                                    {dataVal}
+                                </div>
+                            )}
+                        </div>
+                    )
+                }
                 {noData}
                 {pagination}
                 <Modal
@@ -98,7 +104,7 @@ class Table extends Component {
                     dataToUpdate={this.props.dataToUpdate}
                     closeModal={this.props.closeModal}
                 />
-            </div>
+            </div >
         );
     }
 }

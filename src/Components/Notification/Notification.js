@@ -1,21 +1,22 @@
 import React, { Component } from 'react'
 import Table from '../../Layout/Table/Table'
 import { bindClassMethodsToThis, toDateString, isEmpty } from '../../Services/Utils/Utility'
-import { fetchData, submitData, updateData } from '../../Services/Api/Api'
+import { fetchData, submitData } from '../../Services/Api/Api'
 import Update from './Update'
 
-class Guardian extends Component {
+class Notification extends Component {
   constructor() {
     super();
-    this.api = 'get-parents';
+    this.api = 'get-notifications';
     this.method = 'GET';
     this.state = {
       dataArray: [],
       created: false,
       dataToUpdate: {},
-      vehicles: {}
+      schools: {},
+      buses: {}
     }
-    bindClassMethodsToThis(Guardian.prototype, this)
+    bindClassMethodsToThis(Notification.prototype, this)
   }
 
   toggleCreated() {
@@ -33,22 +34,7 @@ class Guardian extends Component {
     }
 
     if (isEmpty(this.state.dataToUpdate)) {
-      submitData('create-parent', 'POST', dataObj)
-        .then(response => {
-          if (response) {
-            this.setState({
-              created: true
-            })
-          } else {
-            alert('Something went wrong please try again');
-          }
-        }
-        );
-    } else {
-      if (!dataObj.password) {
-        dataObj.password = this.state.dataToUpdate.password;
-      }
-      updateData('update-parent', dataObj, this.state.dataToUpdate.id)
+      submitData('create-notification', 'POST', dataObj)
         .then(response => {
           if (response) {
             this.setState({
@@ -68,11 +54,11 @@ class Guardian extends Component {
       response.map(data =>
         dataArray.push([
           data.id,
-          data.username,
-          data.email,
-          data.status,
-          data.phone,
-          toDateString(data.updated_at)
+          data.school,
+          data.bus,
+          data.message,
+          data.status ? 'notified' : 'not notified',
+          toDateString(data.created_at)
         ])
       );
     }
@@ -86,21 +72,11 @@ class Guardian extends Component {
       .then(response => this.formatData(response));
   }
 
-  updateData(id) {
-    const params = {
-      id
-    }
-    fetchData(this.api, this.method, params)
-      .then(response => this.setState({
-        dataToUpdate: response[0]
-      }));
-  }
-
   searchData(param) {
     let params = {};
     if (param) {
       params = {
-        username: param
+        location: param
       }
     }
     fetchData(this.api, this.method, params)
@@ -116,16 +92,29 @@ class Guardian extends Component {
     })
   }
 
-  getVehicles() {
-    fetchData('get-vehicles', this.method)
+  getSchools() {
+    fetchData('get-schools', this.method)
       .then(response => this.setState({
-        vehicles: response
+        schools: response
       }));
+  }
+
+  getBuses(school_id) {
+    if (school_id) {
+      fetchData('get-vehicles/' + school_id, this.method)
+        .then(response => this.setState({
+          buses: response
+        }));
+    } else {
+      this.setState({
+        buses: {}
+      })
+    }
   }
 
   componentDidMount() {
     this.fetchData();
-    this.getVehicles();
+    this.getSchools();
   }
 
   componentDidUpdate(prevState) {
@@ -137,11 +126,11 @@ class Guardian extends Component {
 
   render() {
     const tableHeaders = [
-      'name',
-      'email',
+      'school',
+      'bus',
+      'message',
       'status',
-      'phone',
-      'updated at'
+      'created at'
     ];
     return (
       <React.Fragment>
@@ -153,19 +142,21 @@ class Guardian extends Component {
             screen={this.props.screen}
             created={this.state.created}
             data={this.state.dataToUpdate}
-            vehicles={this.state.vehicles}
+            schools={this.state.schools}
+            buses={this.state.buses}
+            getBuses={this.getBuses}
           />}
           submitForm={this.submitForm}
           created={this.state.created}
           toggleCreated={this.toggleCreated}
-          updateData={this.updateData}
           dataToUpdate={this.state.dataToUpdate}
           closeModal={this.closeModal}
           searchData={this.searchData}
+          noSearch={true}
         />
       </React.Fragment>
     );
   }
 }
 
-export default Guardian;
+export default Notification;

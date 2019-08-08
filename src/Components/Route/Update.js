@@ -7,8 +7,10 @@ class Update extends Component {
     this.initialData = {
       from: '',
       from_lat: '',
+      from_long: '',
       to: '',
       to_lat: '',
+      to_long: '',
       status: ''
     }
     this.state = this.initialData;
@@ -25,8 +27,10 @@ class Update extends Component {
         this.setState({
           from: this.props.data.from,
           from_lat: this.props.data.from_lat,
+          from_long: this.props.data.from_long,
           to: this.props.data.to,
           to_lat: this.props.data.to_lat,
+          to_long: this.props.data.to_long,
           status: this.props.data.status
         });
       }
@@ -49,14 +53,20 @@ class Update extends Component {
           <div className="form-group">
             <label>From</label>
             <input name="from" className="input-control" value={this.state.from} onChange={this.handleInputChange} />
-            <label className="right-inline">From Latitude</label>
-            <input name="from_lat" className="input-control" value={this.state.from_lat} onChange={this.handleInputChange} />
+            <label className="right-inline">To</label>
+            <input name="to" className="input-control" value={this.state.to} onChange={this.handleInputChange} />
           </div>
           <div className="form-group">
-            <label>To</label>
-            <input name="to" className="input-control" value={this.state.to} onChange={this.handleInputChange} />
+            <label>From Latitude</label>
+            <input name="from_lat" className="input-control" value={this.state.from_lat} onChange={this.handleInputChange} />
             <label className="right-inline">To Latitude</label>
             <input name="to_lat" className="input-control" value={this.state.to_lat} onChange={this.handleInputChange} />
+          </div>
+          <div className="form-group">
+            <label>From Longitude</label>
+            <input name="from_long" className="input-control" value={this.state.from_long} onChange={this.handleInputChange} />
+            <label className="right-inline">To Longitude</label>
+            <input name="to_long" className="input-control" value={this.state.to_long} onChange={this.handleInputChange} />
           </div>
           <div className="form-group">
             <label>Status</label>

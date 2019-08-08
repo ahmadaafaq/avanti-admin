@@ -4,7 +4,6 @@
   "description": "frontend",
   "author": "Aafaq",
   "license": "ISC",
-  "proxy": "http://localhost:8000/api/",
   "homepage": "https://ahmadaafaq.github.io/avanti-admin",
   "dependencies": {
     "@emotion/core": "^10.0.10",
