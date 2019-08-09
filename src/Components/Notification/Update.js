@@ -47,8 +47,14 @@ class Update extends Component {
             </select>
           </div>
           <div className="form-group">
-            <label>Message</label>
+            <label>Type</label>
+            <select name="type" className="select-control" value={this.state.type} onChange={this.handleInputChange}>
+              <option value="parent">Parent</option>
+              <option value="driver">Driver</option>
+            </select>
+            <label className="right-inline">Message</label>
             <input name="message" className="input-control" value={this.state.message} onChange={this.handleInputChange} />
+            <input type="hidden" name="category" value="custom" />
           </div>
         </div>
       </form>

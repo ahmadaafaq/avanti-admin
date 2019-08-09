@@ -54,6 +54,7 @@ class Notification extends Component {
       response.map(data =>
         dataArray.push([
           data.id,
+          data.type,
           data.school,
           data.bus,
           data.message,
@@ -126,6 +127,7 @@ class Notification extends Component {
 
   render() {
     const tableHeaders = [
+      'type',
       'school',
       'bus',
       'message',
